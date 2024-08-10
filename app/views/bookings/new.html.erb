@@ -1,0 +1,47 @@
+<div class="card">
+  <div class="card-header">
+    <h1>Booking for <%= @show.show_time.strftime("%B %d, %Y %I:%M %p") %></h1>
+  </div>
+  <div class="card-body">
+    <%= form_with(model: [@show, @booking], local: true) do |f| %>
+      <div class="form-group">
+        <%= f.hidden_field :number_of_seats, id: "no-of-seats"%>
+      </div>
+
+      <% seats = @show.seats.each_slice(10).to_a %>
+      <% seats.each do |seat_group| %>
+        <div class="row mb-3">
+          <% seat_group.each do |seat| %>
+            <% unless seat.booked? %>
+              <div class="col-md-1">
+                <%= f.check_box :seat_ids, { multiple: true, class: "seat-checkbox"}, seat.id, nil %>
+                <label class="form-check-label">
+                  Seat <%= seat.seat_number %>
+                  Row <%= seat.seat_row %>
+                </label>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+      <% end %>
+
+      <div class="form-group">
+        <%= f.hidden_field :show_id, value: @show.id %>
+        <%= f.submit 'Confirm Booking', class: 'btn btn-primary' %>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function() {
+    function updateSeatCount() {
+      var checkedCount = $('.seat-checkbox:checked').length;
+      $('#no-of-seats').val(checkedCount);
+    }
+
+    $('.seat-checkbox').on('change', function() {
+      updateSeatCount();
+    });
+  });
+</script>

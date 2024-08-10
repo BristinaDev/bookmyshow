@@ -1,0 +1,21 @@
+<div class="container mt-4">
+  <h1>Booking Confirmation</h1>
+	<div class="row">
+		<% @bookings.each do |book| %>
+			<div class="col-md-4">
+				<div class="card mb-4">
+					<div class="card-body">
+						<label class="form-check-label">
+							<h5 class="card-title">Movie: <%= book.show.movie.title %></h5>
+							<p class="card-text">Show Time: <%= book.show.show_time.strftime("%B %d, %Y %I:%M %p") %></p>
+							<p class="card-text">Seat Number(s): <%= book.seat_ids.join(", ") %></p>
+							<p class="card-text">User Email: <%= book.user.email %></p>
+							<p class="card-text">User Name: <%= book.user.name %></p>
+						</label>
+						<%= button_to "Cancel Booking", show_booking_path(book.show, book), method: :delete, class: "btn btn-danger" %>
+					</div>			
+				</div>
+			</div>
+		<% end %>
+	</div>
+</div>

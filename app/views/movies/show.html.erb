@@ -4,7 +4,7 @@
     <div class="col-md-4 mb-4">
       <div class="card text-center">
         <div class="card-body">
-          <p>Book Your Ticket here -> <%= link_to show.show_time.strftime("%B %d, %Y %I:%M %p"), movie_show_path(@movie, show) %></p>
+          <p>Book Your Ticket here -> <%= link_to show.show_time.strftime("%B %d, %Y %I:%M %p"), show_path(show) %></p>
         </div>
         <div class="card-footer text-muted">
           <h3 class="text-warning">Hurry up, only a few seats are left!</h3>

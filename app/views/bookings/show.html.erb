@@ -1,0 +1,19 @@
+<table class="table">
+  <tbody>
+    <tr>
+      <td>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Booking Confirmation</h5>
+            <p class="card-text"><strong>Movie:</strong> <%= @booking.show.movie.title %></p>
+            <p class="card-text"><strong>Show Time:</strong> <%= @booking.show.show_time.strftime("%B %d, %Y %I:%M %p") %></p>
+            <p class="card-text"><strong>Seat Number:</strong> <%= @booking.number_of_seats %></p>
+            <p class="card-text"><strong>User:</strong> <%= @booking.user.name %></p>
+            <p class="card-text"><strong>Email:</strong> <%= @booking.user.email %></p>
+						<h6><%= link_to "Back To Movie", movies_path, class: "card-link" %></h6>
+          </div>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
