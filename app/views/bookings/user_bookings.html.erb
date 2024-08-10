@@ -1,18 +1,16 @@
-<div class="container mt-4">
-  <h1>Booking Confirmation</h1>
-	<div class="row">
+<div class="container">
+  <h1 class="my-4">Booking Confirmation</h1>
+	<div class="row gy-6">
 		<% @bookings.each do |book| %>
 			<div class="col-md-4">
-				<div class="card mb-4">
+				<div class="card bg-gray-100">
 					<div class="card-body">
-						<label class="form-check-label">
-							<h5 class="card-title">Movie: <%= book.show.movie.title %></h5>
-							<p class="card-text">Show Time: <%= book.show.show_time.strftime("%B %d, %Y %I:%M %p") %></p>
-							<p class="card-text">Seat Number(s): <%= book.seat_ids.join(", ") %></p>
-							<p class="card-text">User Email: <%= book.user.email %></p>
-							<p class="card-text">User Name: <%= book.user.name %></p>
-						</label>
-						<%= button_to "Cancel Booking", show_booking_path(book.show, book), method: :delete, class: "btn btn-danger" %>
+							<h4 class="font-bold mb-3">Movie: <%= book.show.movie.title %></h5>
+							<p class="text-sm mb-1">Show Time: <%= book.show.show_time.strftime("%B %d, %Y %I:%M %p") %></p>
+							<p class="text-sm mb-1">Seat Number(s): <%= book.seat_ids.join(", ") %></p>
+							<p class="text-sm mb-1">User Email: <%= book.user.email %></p>
+							<p class="text-sm mb-4">User Name: <%= book.user.name %></p>
+						<%= button_to "Cancel Booking", show_booking_path(book.show, book), method: :delete, class: "btn btn-danger w-full" %>
 					</div>			
 				</div>
 			</div>

@@ -1,8 +1,8 @@
 <% if user_signed_in? %>
-  <nav class="navbar navbar-main navbar-expand-lg position-sticky top-0 navbar-dark bg-light py-2 py-lg-1 px-0 border-bottom">
+  <nav class="navbar navbar-main navbar-expand-lg position-sticky top-0 navbar-light bg-dark py-4 px-4 border-bottom">
 		<div class="container-fluid">
 			<a class="navbar-brand d-flex align-items-center gap-2">
-				<span class="text-dark h5 font-bold ls-dark">
+				<span class="text-light h5 font-bold ls-light">
 					<% if user_signed_in? %>
 					<%= current_user&.email %></p>
 					<% end %>
@@ -13,7 +13,7 @@
 			</button>
 			<div class="navbar-nav order-lg-5 ms-auto d-none d-lg-inline-flex align-items-center">
 				<li class="nav-item">
-					<%= link_to 'Logout', destroy_user_session_path, class: 'nav-link text-dark' %>
+					<%= link_to 'Logout', destroy_user_session_path, class: 'btn btn-lg py-3 btn-light' %>
 				</li>
 			</div>
 		</div>

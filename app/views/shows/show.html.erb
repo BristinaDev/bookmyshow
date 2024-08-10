@@ -1,13 +1,13 @@
 <div class="container">
-  <h1>Show Time: <%= @show.show_time.strftime("%B %d, %Y %I:%M %p") %></h1>
-  <h2>Available Seats -  <%= link_to 'Book Now', new_show_booking_path(@show) %></h2> 
-  <div class="row">
+  <h1 class="my-4">Show Time: <%= @show.show_time.strftime("%B %d, %Y %I:%M %p") %></h1>
+  <h2 class="mb-6">Available Seats -  <%= link_to 'Book Now', new_show_booking_path(@show), class: "btn btn-danger" %></h2> 
+  <div class="row gy-6">
     <% @show.seats.each do |seat| %>
-      <div class="col-md-2 mb-2">
+      <div class="col-md-2">
         <% unless seat.booked? %>
-          <div class="card">
+          <div class="card bg-green-100 border-0">
             <div class="card-body">
-              <h5 class="card-title">Seat Row <%= seat.seat_row %><br/>Seat No <%= seat.seat_number %></h5>
+              <h5 class="text-center">Seat Row <%= seat.seat_row %><br/>Seat No <%= seat.seat_number %></h5>
             </div>
           </div>
         <% end %>

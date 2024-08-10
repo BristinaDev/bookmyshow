@@ -1,8 +1,5 @@
-<div class="card">
-  <div class="card-header">
-    <h1>Booking for <%= @show.show_time.strftime("%B %d, %Y %I:%M %p") %></h1>
-  </div>
-  <div class="card-body">
+<div class="container">
+    <h1 class="my-4">Booking for <%= @show.show_time.strftime("%B %d, %Y %I:%M %p") %></h1>
     <%= form_with(model: [@show, @booking], local: true) do |f| %>
       <div class="form-group">
         <%= f.hidden_field :number_of_seats, id: "no-of-seats"%>
@@ -10,15 +7,19 @@
 
       <% seats = @show.seats.each_slice(10).to_a %>
       <% seats.each do |seat_group| %>
-        <div class="row mb-3">
+        <div class="row mb-2 gy-2 gx-2">
           <% seat_group.each do |seat| %>
             <% unless seat.booked? %>
-              <div class="col-md-1">
-                <%= f.check_box :seat_ids, { multiple: true, class: "seat-checkbox"}, seat.id, nil %>
-                <label class="form-check-label">
-                  Seat <%= seat.seat_number %>
-                  Row <%= seat.seat_row %>
-                </label>
+              <div class="col-md">
+                <div class="card h-full bg-gray-200">
+                  <div class="card-body p-4">
+                    <%= f.check_box :seat_ids, { multiple: true, class: "seat-checkbox"}, seat.id, nil %>
+                    <label class="form-check-label">
+                      Seat <%= seat.seat_number %>
+                      Row <%= seat.seat_row %>
+                    </label>
+                  </div>
+                </div>
               </div>
             <% end %>
           <% end %>
@@ -27,10 +28,9 @@
 
       <div class="form-group">
         <%= f.hidden_field :show_id, value: @show.id %>
-        <%= f.submit 'Confirm Booking', class: 'btn btn-primary' %>
+        <%= f.submit 'Confirm Booking', class: 'btn btn-success my-4' %>
       </div>
     <% end %>
-  </div>
 </div>
 
 <script>
