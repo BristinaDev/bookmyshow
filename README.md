@@ -25,6 +25,5 @@ This application uses PostgreSQL as the database. Follow these steps to set up t
    rails db:migrate
    rails db:seed
  ```
-Start the rails server
+rails server
 
-* ...
